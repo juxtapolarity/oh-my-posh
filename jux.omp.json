@@ -1,0 +1,109 @@
+{
+    "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+    "blocks": [
+        {
+            "alignment": "left",
+            "segments": [
+                {
+                    "foreground": "#ad60f4",
+                    "style": "plain",
+                    "template": "\u256d\u2500\ueb99 {{ .UserName }} at",
+                    "type": "session"
+                },
+                {
+                    "foreground": "#ad8ee6",
+                    "properties": {
+                        "folder_separator_icon": "/",
+                        "style": "full",
+                        "mapped_locations": {
+                            "C:/Users/juls/*": "~"
+                        }
+                    },
+                    "style": "plain",
+                    "template": " \uf07b {{ .Path }} ",
+                    "type": "path"
+                },
+                {
+                    "foreground": "#f1c232",
+                    "powerline_symbol": "\ue0b0",
+                    "properties": {
+                        "branch_icon": "\uf126 ",
+                        "fetch_status": true,
+                        "fetch_stash_count": true,
+                        "fetch_upstream_icon": true
+                    },
+                    "style": "plain",
+                    "template": "in {{ .UpstreamIcon }}{{ .HEAD }} {{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  <#604d14>{{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}</> <#f1c232></><#604d14>{{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}</> <#f1c232>\ueb4b</> <#604d14>{{ .StashCount }}{{ end }}</>",
+
+                    "type": "git"
+                }
+            ],
+            "type": "prompt"
+        },
+        {
+            "alignment": "right",
+            "segments": [
+                {
+                    "type": "python",
+                    "style": "plain",
+                    "foreground": "#44903d",
+                    "properties": {
+                        "fetch_virtual_env": true,
+                        "home_enabled": true,
+                        "display_mode": "always"
+                    },
+                    "template": "   {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }} "
+                },
+                {
+                    "foreground": "#ad60f4",
+                    "style": "plain",
+                    "template": " {{ .FormattedMs }} \uf252 ",
+                    "type": "executiontime"
+                },
+                {
+                    "background_templates": [
+                        "{{ if gt .Code 0 }}#cc2222{{ end }}"
+                    ],
+                    "foreground": "#d3d7cf",
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "style": "plain",
+                    "template": " {{ if gt .Code 0 }}{{ .Meaning }}{{ else }}\u2714{{ end }} ",
+                    "type": "exit"
+                },
+                {
+                    "foreground": "#ad60f4",
+                    "style": "plain",
+                    "template": " {{ .CurrentDate | date .Format }} \uf017\u2500\u256e",
+                    "type": "time"
+                }
+            ],
+            "type": "prompt"
+        },
+        {
+            "alignment": "left",
+            "newline": true,
+            "segments": [
+                {
+                    "foreground": "#ad60f4",
+                    "style": "plain",
+                    "template": "\u2570\u2500",
+                    "type": "text"
+                },
+                {
+                    "foreground": "#e0f8ff",
+                    "foreground_templates": ["{{ if gt .Code 0 }}#ef5350{{ end }}"],
+                    "properties": {
+                        "always_enabled": true
+                    },
+                    "style": "plain",
+                    "template": "\ue285 ",
+                    "type": "exit"
+                }
+            ],
+            "type": "prompt"
+        }
+    ],
+    "version": 2
+}
